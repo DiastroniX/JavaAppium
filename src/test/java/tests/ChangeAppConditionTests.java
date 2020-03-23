@@ -12,6 +12,8 @@ public class ChangeAppConditionTests extends CoreTestCase
     @Test
     public void testChangeScreenOrientationOnSearchResult()
     {
+        if (Platform.getInstance().isMW())
+        { return; }
         SearchPageObject searchPageObject = SearchPageObjectFactory.get(driver);
 
         searchPageObject.initSearchInput();
@@ -45,6 +47,8 @@ public class ChangeAppConditionTests extends CoreTestCase
     @Test
     public void testCheckSearchArticleInBackground()
     {
+        if (Platform.getInstance().isMW())
+        { return; }
         SearchPageObject searchPageObject = SearchPageObjectFactory.get(driver);
 
         searchPageObject.initSearchInput();
