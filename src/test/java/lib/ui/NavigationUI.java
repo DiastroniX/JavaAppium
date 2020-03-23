@@ -29,14 +29,15 @@ abstract public class NavigationUI extends MainPageObject {
         if (Platform.getInstance().isMW()) {
             this.tryClickElementWithFewAttempts(
                     MY_LISTS_LINK,
-                    "Cannot find navigation button to My lists",
+                    "Cannot find navigation button to My list",
+                    5
+            );
+        } else {
+            this.waitForElementAndClick(
+                    MY_LISTS_LINK,
+                    "Cannot find navigation button to My list",
                     5
             );
         }
-        this.waitForElementAndClick(
-                MY_LISTS_LINK,
-                "Cannot find navigation button to My lists",
-                10
-        );
     }
 }
