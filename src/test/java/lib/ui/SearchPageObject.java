@@ -11,6 +11,7 @@ abstract public class SearchPageObject extends MainPageObject {
     protected static String
             SEARCH_INIT_ELEMENT,
             SEARCH_INPUT,
+            SEARCH_INPUT_BY_TITLE_TPL,
             SEARCH_CANCEL_BUTTON,
             SEARCH_RESULT_BY_SUBSTRING_TPL,
             SEARCH_RESULT_BY_TITLE_AND_SUBSTRING_TPL,
@@ -67,8 +68,19 @@ abstract public class SearchPageObject extends MainPageObject {
     }
 
     public void clickByArticleWithSubstring(String substring) {
-        String search_result_xpath = getResultSearchElementByText(substring);
+        String search_result_xpath = getResultElementSearchByTitle(substring);
         this.waitForElementAndClick(search_result_xpath, "Cannot find and click search result with substring " + substring, 10);
+    }
+
+    private static String getResultElementSearchByTitle(String title)
+    {
+        return SEARCH_INPUT_BY_TITLE_TPL.replace("{TITLE}", title);
+    }
+
+    public void clickByItemWithTitle(String title)
+    {
+        String search_result_xpath= getResultElementSearchByTitle(title);
+        this.waitForElementAndClick(search_result_xpath,"Cannot find and click search result with title" + title, 10);
     }
 
     public int getAmountOfFoundArticles() {
